@@ -4,8 +4,6 @@ import './globals.css';
 import { ThemeProvider } from 'next-themes';
 import { ModeToggle } from '@/components/ui/mode-toggle';
 
-
-
 const geistSans = Geist({
   variable: '--font-geist-sans',
   subsets: ['latin'],
@@ -27,16 +25,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
-          enableSystem
+          enableSystem={true}
           disableTransitionOnChange
         >
           {children}
-          <ModeToggle/>
+          <ModeToggle />
         </ThemeProvider>
       </body>
     </html>
